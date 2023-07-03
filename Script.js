@@ -94,11 +94,12 @@ function valsMoption(){
             && (cuentas[iCount].saldo+parseInt(document.getElementById("idSaldoT").value)<=990)){
                 cuentas[iCount].saldo=cuentas[iCount].saldo+parseInt(document.getElementById("idSaldoT").value)
                 etiquetaST= document.createElement("input");
-                etiquetaST.value = cuentas[iCount].saldo
+                etiquetaST.value = "$"+cuentas[iCount].saldo
                 etiquetaST.disabled=true
                 document.body.appendChild(etiquetaST);                    
+                window.alert("El monto ingresado a la cuenta es: $"+document.getElementById("idSaldoT").value)
             }else{
-                window.alert("No se puede realizar la operacion dado a que no cumple con los limites establecidos")
+                window.alert("No se puede realizar la operacion dado a que no cumple con los limites establecidos, Saldo mayor a $990")
             }
             };
         }else{
@@ -107,11 +108,12 @@ function valsMoption(){
             && (cuentas[iCount].saldo-parseInt(document.getElementById("idSaldoT").value)<=990)){
                 cuentas[iCount].saldo=cuentas[iCount].saldo-parseInt(document.getElementById("idSaldoT").value)
                 etiquetaST= document.createElement("input");
-                etiquetaST.value = cuentas[iCount].saldo
+                etiquetaST.value = "$"+cuentas[iCount].saldo
                 etiquetaST.disabled=true
                 document.body.appendChild(etiquetaST);                    
+                window.alert("El monto retirado de la cuenta es: $"+document.getElementById("idSaldoT").value)
             }else{
-                window.alert("No se puede realizar la operacion dado a que no cumple con los limites establecidos")
+                window.alert("No se puede realizar la operacion dado a que no cumple con los limites establecidos, , Saldo menor a $10")
             }
             };
         }
