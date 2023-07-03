@@ -57,6 +57,7 @@ var iCount
 let etiqueta
 let etiquetaBTN
 let etiquetaST
+let label
 function valsMoption(){
     var opt = document.getElementById("sMoption").value    
     for ( var i = 0; i < cuentas.length; i++) {        
@@ -67,7 +68,10 @@ function valsMoption(){
     }        
     //removeEventListener,pv etiqueta
         
-    if (parseInt(opt)==1) {                
+    if (parseInt(opt)==1) {   
+        label=document.createElement("label");
+        label.innerHTML="Saldo Actual"
+        document.body.appendChild(label);     
         etiqueta= document.createElement("input");
         etiqueta.value = isaldo        
         etiqueta.disabled=true
@@ -80,6 +84,7 @@ function valsMoption(){
             etiqueta.remove()
             etiquetaBTN.remove()
             etiquetaST.remove()
+            label.remove()
         }
         etiqueta= document.createElement("input");
             etiqueta.id ="idSaldoT"
@@ -93,6 +98,9 @@ function valsMoption(){
             if((cuentas[iCount].saldo+parseInt(document.getElementById("idSaldoT").value))>=10
             && (cuentas[iCount].saldo+parseInt(document.getElementById("idSaldoT").value)<=990)){
                 cuentas[iCount].saldo=cuentas[iCount].saldo+parseInt(document.getElementById("idSaldoT").value)
+                label=document.createElement("label");
+                label.innerHTML="Saldo Actual"
+                document.body.appendChild(label);                    
                 etiquetaST= document.createElement("input");
                 etiquetaST.value = "$"+cuentas[iCount].saldo
                 etiquetaST.disabled=true
@@ -107,6 +115,9 @@ function valsMoption(){
             if((cuentas[iCount].saldo-parseInt(document.getElementById("idSaldoT").value))>=10
             && (cuentas[iCount].saldo-parseInt(document.getElementById("idSaldoT").value)<=990)){
                 cuentas[iCount].saldo=cuentas[iCount].saldo-parseInt(document.getElementById("idSaldoT").value)
+                label=document.createElement("label");
+                label.innerHTML="Saldo Actual"
+                document.body.appendChild(label);     
                 etiquetaST= document.createElement("input");
                 etiquetaST.value = "$"+cuentas[iCount].saldo
                 etiquetaST.disabled=true
