@@ -45,6 +45,8 @@ function valPassw(){
     }
     if (document.getElementById("valPass").value==sPassword) {
         document.getElementById("sMenuOption").style.display="block";        
+        document.getElementById("sAcount").setAttribute("disabled","true")
+        document.getElementById("valPass").setAttribute("disabled","true")
         console.log("Pruebas exitosas")
     }else{
         window.alert("Contraseña  incorrecta, Favor validar")
@@ -67,44 +69,37 @@ function valsMoption(){
         }
     }        
     //removeEventListener,pv etiqueta
-        
-    if (parseInt(opt)==1) {   
+    let section= document.getElementById("Results")
+    if (parseInt(opt)==1) {           
+        section.innerHTML=""
         label=document.createElement("label");
         label.innerHTML="Saldo Actual"
-        document.body.appendChild(label);     
+        document.getElementById("Results").appendChild(label);             
         etiqueta= document.createElement("input");
         etiqueta.value = isaldo        
         etiqueta.disabled=true
-        document.body.appendChild(etiqueta);        
+        document.getElementById("Results").appendChild(etiqueta);        
     } else if (parseInt(opt)==2||parseInt(opt)==3){        
-        //$('#idSaldoM').remove();                  
-        if(!etiqueta||!etiquetaBTN||!etiquetaST){
-          //console.log("NO EXISTE!!! ")            
-        }else{        
-            etiqueta.remove()
-            etiquetaBTN.remove()
-            etiquetaST.remove()
-            label.remove()
-        }
-        etiqueta= document.createElement("input");
+            section.innerHTML=""
+            etiqueta= document.createElement("input");
             etiqueta.id ="idSaldoT"
-            document.body.appendChild(etiqueta);                
+            document.getElementById("Results").appendChild(etiqueta);                
             etiquetaBTN= document.createElement("button");
             etiquetaBTN.type="submit"
             etiquetaBTN.id="btnEnv"
             etiquetaBTN.textContent="Enviar"
-        if(parseInt(opt)==2){
-            etiquetaBTN.onclick=function CalcSal(){
+        if(parseInt(opt)==2){            
+            etiquetaBTN.onclick=function CalcSal(){            
             if((cuentas[iCount].saldo+parseInt(document.getElementById("idSaldoT").value))>=10
             && (cuentas[iCount].saldo+parseInt(document.getElementById("idSaldoT").value)<=990)){
                 cuentas[iCount].saldo=cuentas[iCount].saldo+parseInt(document.getElementById("idSaldoT").value)
                 label=document.createElement("label");
                 label.innerHTML="Saldo Actual"
-                document.body.appendChild(label);                    
+                document.getElementById("Results").appendChild(label);                    
                 etiquetaST= document.createElement("input");
-                etiquetaST.value = "$"+cuentas[iCount].saldo
+                etiquetaST.value = "$"+cuentas[iCount].saldo                
                 etiquetaST.disabled=true
-                document.body.appendChild(etiquetaST);                    
+                document.getElementById("Results").appendChild(etiquetaST);                    
                 window.alert("El monto ingresado a la cuenta es: $"+document.getElementById("idSaldoT").value)
             }else{
                 window.alert("No se puede realizar la operacion dado a que no cumple con los limites establecidos, Saldo mayor a $990")
@@ -117,18 +112,18 @@ function valsMoption(){
                 cuentas[iCount].saldo=cuentas[iCount].saldo-parseInt(document.getElementById("idSaldoT").value)
                 label=document.createElement("label");
                 label.innerHTML="Saldo Actual"
-                document.body.appendChild(label);     
+                document.getElementById("Results").appendChild(label);     
                 etiquetaST= document.createElement("input");
                 etiquetaST.value = "$"+cuentas[iCount].saldo
                 etiquetaST.disabled=true
-                document.body.appendChild(etiquetaST);                    
+                document.getElementById("Results").appendChild(etiquetaST);                    
                 window.alert("El monto retirado de la cuenta es: $"+document.getElementById("idSaldoT").value)
             }else{
                 window.alert("No se puede realizar la operacion dado a que no cumple con los limites establecidos, , Saldo menor a $10")
             }
             };
         }
-        document.body.appendChild(etiquetaBTN);            
+        document.getElementById("Results").appendChild(etiquetaBTN);            
     }else{
         console.log("Seleccione otra opcion")
     }
